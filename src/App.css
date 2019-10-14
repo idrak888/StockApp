@@ -1,22 +1,102 @@
-.App {
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: white;
+  color: black;
+}
+.Dashboard {
+  display: block;
+  margin: auto;
+  width: 90%;
+  max-width: 1000px;
+  padding: 12px;
+}
+.Dashboard .container {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
+.Dashboard .data {
+  margin-top: 80px;
+}
+.Dashboard .left {
+  margin-left: 20px;
+  text-align: left;
+}
+.Dashboard .right {
+  text-align: right;
+  margin-top: -100px;
+}
+.Dashboard .data .price {
+  font-size: 50px;
+}
+.Dashboard .data .symbol {
+  font-size: 45px;
+  font-weight: bold;
+}
+.Dashboard .data p {
+  font-size: large;
+}
+.Dashboard .data .red {
+  color: red;
+}
+.Dashboard .data .green {
+  color: rgb(31, 192, 31);
+}
+.Dashboard .loader {
+  margin: auto;
+  width: 300px;
+  margin-top: 25vh;
+}
+.Dashboard input {
+  background-color: transparent;
+  color: black;
+  font-size: x-large;
+  padding: 6px;
+  border: 0;
+  border-bottom: 1px solid black;
+  max-width: 400px;
+  width: 100%;
+  float: right;
+  margin: 20px 0px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.SearchResults {
+  margin: auto;
+  width: 90%;
+  background-color: white;
+  font-size: x-large;
+  padding: 20px;
+  display: none;
+  animation: slideUp;
+  animation-duration: 0.5s;
+  text-align: center;
+  height: 400px;
+  overflow-y: scroll;
+}
+@keyframes slideUp {
+  from {margin-bottom: -100px}
+  to {margin-bottom: 0px}
 }
 
-.App-link {
-  color: #09d3ac;
+.SearchResults h2 {
+  color: rgb(31, 93, 165);
+}
+.SearchResults p {
+  list-style-type: none;
+  color: rgb(51, 51, 51);
+  padding: 12px;
+  text-align: left;
+  display: block;
+  border: 1px solid rgb(107, 107, 107);
+  font-weight: bold;
+}
+.SearchResults p:hover {
+  cursor: pointer;
+  color: rgb(31, 93, 165);
+  border-color: rgb(31, 93, 165);
+}
+.Dashboard p .name {
+  color: grey;
+  font-size: medium;
+  font-weight: normal;
 }
