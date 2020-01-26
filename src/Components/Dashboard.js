@@ -28,23 +28,24 @@ class Dashboard extends React.Component {
             }, () => {
                 axios.get(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${this.apikey}}`)
                 .then (doc2 => {
-                    console.log(doc2.data);
                     this.setState({quote: doc2.data["Global Quote"]}, 
-                    () => {
+                        () => {
+                            if (this.state.quote) {
                                 this.setState({loaded:true}, () => {
-                                loader.style.display = 'none';
+                                    loader.style.display = 'none';
 
-                                const price = document.querySelector('.price');
-                                console.log(this.state.metaData);
-    
-                                if (this.state.quote["09. change"] < 0) {
-                                    price.classList.add('red'); 
-                                    price.classList.remove('green');
-                                } else {
-                                    price.classList.add('green');
-                                    price.classList.remove('red');
-                                }
-                            });
+                                    const price = document.querySelector('.price');
+                                    console.log(this.state.metaData);
+        
+                                    if (this.state.quote["09. change"] < 0) {
+                                        price.classList.add('red'); 
+                                        price.classList.remove('green');
+                                    } else {
+                                        price.classList.add('green');
+                                        price.classList.remove('red');
+                                    }
+                                });
+                            }
                         }
                     );
                 });
@@ -77,7 +78,7 @@ class Dashboard extends React.Component {
                     <input onChange={this.handleSearch} type="text" placeholder="Search equities"/>
                 </form>
                 <img src="https://flevix.com/wp-content/uploads/2019/07/Ring-Preloader.gif" className="loader"/>
-                {( (this.state.loaded) ? 
+                {( (this.state.loaded) && this.state.quote ? 
                     <div className="container">
                         <div className="data left">
                             <span className="symbol">{this.state.quote["01. symbol"]}</span>
