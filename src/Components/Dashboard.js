@@ -12,7 +12,7 @@ class Dashboard extends React.Component {
         searchKeywords: '',
         searchResults: []
     }
-    apikey = '8CGXN4YVSQE3W394';
+    apikey = '';
     mainCall = symbol => {
         const loader = document.querySelector('.loader');
         document.querySelector('#top-form').scrollIntoView();
