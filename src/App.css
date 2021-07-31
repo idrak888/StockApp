@@ -44,7 +44,7 @@ body {
 }
 .Dashboard .loader {
   margin: auto;
-  width: 300px;
+  width: 50px;
   margin-top: 25vh;
 }
 .Dashboard input {
@@ -99,4 +99,33 @@ body {
   color: grey;
   font-size: medium;
   font-weight: normal;
+}
+.OverlayModule {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.OverlayModule .module {
+  z-index: 1000;
+  background-color: white;
+  padding: 30px;
+  margin: auto;
+  margin-top: 50px;
+  max-width: 1000px;
+}
+.OverlayModule .module h3 {
+  margin-top: 10px;
+  padding: 10px;
+  border: 2px solid rgb(211, 211, 211);
+  border-radius: 5px;
+}
+.OverlayModule .module .btn {
+  color: blue;
+  text-decoration: underline;
+  background-color: white;
+  border: 0;
+  cursor: pointer;
+  font-size: 18px;
 }

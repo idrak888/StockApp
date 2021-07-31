@@ -12,7 +12,9 @@ class Dashboard extends React.Component {
         searchKeywords: '',
         searchResults: []
     }
+
     apikey = '';
+
     mainCall = symbol => {
         const loader = document.querySelector('.loader');
         document.querySelector('#top-form').scrollIntoView();
@@ -54,9 +56,11 @@ class Dashboard extends React.Component {
             console.log(e);
         });   
     } 
+
     componentDidMount () {
-        this.mainCall('AMD');
+        this.mainCall('TSLA');
     }
+
     handleSearch = e => {
         this.setState({searchKeywords:e.target.value});
     }
@@ -71,22 +75,25 @@ class Dashboard extends React.Component {
             });
         }
     }
+
+    round = num => Math.round(num * 10) / 10;
+
     render () {
         return (
             <div className="Dashboard">
                 <form id="top-form" onSubmit={this.showResults}>
                     <input onChange={this.handleSearch} type="text" placeholder="Search equities"/>
                 </form>
-                <img src="https://flevix.com/wp-content/uploads/2019/07/Ring-Preloader.gif" className="loader"/>
+                <img src="https://icon-library.com/images/loading-icon-transparent-background/loading-icon-transparent-background-12.jpg" className="loader"/>
                 {( (this.state.loaded) && this.state.quote ? 
                     <div className="container">
                         <div className="data left">
                             <span className="symbol">{this.state.quote["01. symbol"]}</span>
                             <br/>
-                            <span className="price">${this.state.quote["05. price"]}</span>
+                            <span className="price">${this.round(this.state.quote["05. price"])}</span>
                         </div>
                         <div className="data right">
-                            <p>Day range: {this.state.quote["04. low"]}-{this.state.quote["03. high"]}</p>
+                            <p>Day range: {this.round(this.state.quote["04. low"])}-{this.round(this.state.quote["03. high"])}</p>
                             <p>Volume: {this.state.quote["06. volume"]}</p>
                             <p>% Change: {this.state.quote["10. change percent"]}</p>
                         </div>
@@ -97,7 +104,7 @@ class Dashboard extends React.Component {
                         <h2 id="searchResults">Search results</h2>
                         <SearchResults selectSearch={this.mainCall} searchResults={this.state.searchResults}/>
                     </div>
-                : 'loading')}
+                : '')}
             </div>
         )
     }
